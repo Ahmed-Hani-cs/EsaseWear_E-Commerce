@@ -1,0 +1,194 @@
+.navbar{
+  font-family: "Poppins", sans-serif;  
+}
+
+.navbar {
+    font-size: 1rem;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#logo  {
+    width: 70px;
+	border-radius: 50%;
+  }
+.navbar-light .navbar-nav .nav-link {
+    padding: 0 20px;
+    color: black;
+    transform: 0.3 ease;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar svg:hover,
+.navbar-light .navbar-nav .nav-link:active,
+.navbar svg:active {
+    color: coral;
+}
+
+.dropdown-item:hover{
+    color: coral;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #dee2e6;
+}
+
+#Profile{
+    margin-left: -25px;
+}
+
+
+
+.navbar svg {
+    font-size: 1.8rem;
+    padding: 0px 7px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #111;
+    transition: 0.3s ease;
+}
+
+#bar {
+    font-size: 1.5rem;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+    color: black;
+}
+
+.navbar-nav .nav-item .icon{
+    color: black;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item {
+   position: relative;
+}
+
+
+#prod_count {
+    background: red;
+    color: #fff;
+    padding: 4px;
+    position: absolute;
+    top: -62%;
+    right: 24%;
+    border-radius: 53%;
+    font-size: 11px;
+}
+
+
+  /* Custom CSS for the User dropdown */
+#Profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#Profile i {
+  margin-right: 5px;
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+  background-color: #fff; /* Background color */
+  border: 1px solid #ddd; /* Border color */
+  border-radius: 0; /* Border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.dropdown-menu a {
+  color: #333; /* Text color */
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  background-color: #f8f9fa; /* Hover background color */
+  color: #333; /* Hover text color */
+}
+
+  
+
+/*mobile nav view*/
+.navbar-light .navbar-toggler {
+    border: none;
+    outline: none;
+    background-color: transparent !important;
+}
+
+#home {
+    background-image: url("../../images/back.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: top 92px center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#home span {
+    color: coral;
+}
+
+@media screen and (max-width: 991px) {
+    #bar:hover {
+        color: white;
+        background-color: coral;
+    }
+
+    #navbarSupportedContent>ul {
+        margin: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    #navbarSupportedContent>ul>li:nth-child(n)>a,
+    .navbar svg {
+        padding: 10px 0px;
+    }
+}
+
+@media (max-width:990px) {
+    #prod_count{
+        top: 4%;
+        right: -14%;
+    }
+
+}
+
+.active{
+
+    color: coral !important;
+}
+
+.navbar-nav .link.active::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: coral;
+    position: absolute;
+    bottom: 0px;
+    left: 30px;
+}

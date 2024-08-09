@@ -1,0 +1,125 @@
+
+
+
+
+
+body,
+ul,
+li,
+p,
+a,
+label,
+input,
+div {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+
+}
+*{
+  background-color: none !important;
+}
+p {
+  color: #000;
+}
+
+.topview {
+  background-color: #a0b5d2;
+}
+
+.h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px !important;
+  font-weight: 500 bold !important;
+}
+
+.about {
+  color: #000;
+  font-weight: 900px bold;
+}
+
+.h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px !important;
+  font-weight: 300;
+}
+
+.h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px !important;
+}
+
+
+
+
+
+
+/* Brand */
+.brand-img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: .5s;
+}
+
+.brand-img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Services */
+.services-icon-wap:hover {
+  color: #82dc76;
+}
+
+/* Contact map */
+/* Footer */
+
+
+/*
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+*/
+
+/* Small devices (landscape phones, 576px and up)*/
+
+@media (max-width: 575.98px) {
+
+  /* Adjusted for small devices */
+  #temp_main_nav .navbar-nav {
+    max-width: auto;
+  }
+
+  /* Adjusted for small devices */
+}
+
+
+
+@media (min-width: 768px) {
+  #temp_main_nav .navbar-nav {
+    max-width: 450px;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  #temp_main_nav .navbar-nav {
+    max-width: 550px;
+  }
+
+  #template-mo-zay-hero-carousel .carousel-item {
+    min-height: 30rem !important;
+  }
+
+  
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+  /* Adjusted for extra-large devices */
+  #temp_main_nav .navbar-nav {
+    max-width: 600px;
+  }
+
+  /* Adjusted for extra-large devices */
+}

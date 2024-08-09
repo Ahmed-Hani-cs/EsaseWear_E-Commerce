@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/master.css">
+    <title>Login & Register</title>
+
+</head>
+<body>
+
+    <!-- Nav bar -->
+    <section id="header">
+
+    </section>
+
+    <!-- login page -->
+    <section class="login-sec col-12">
+        <div class="row mx-auto">
+            <div class="col-12 col-md-6 p-0 h-100">
+                <div id="card-rel" class="card ">
+                    <div class="login-box mx-auto">
+                        <div class="login-snip ">
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                            <label for="tab-1" class="tab">Login</label>
+                            <input id="tab-2" type="radio" name="tab" class="sign-up">
+                            <label for="tab-2" class="tab">Sign Up</label>
+                            <div class="login-space">
+                                <div class="login">
+                                    <div class="group">
+                                        <label for="user-login" class="label">Email</label>
+                                        <input id="user-login" type="text" class="input" placeholder="Enter your Email"
+                                            required>
+                                    </div>
+                                    <div id="invaild_login_email">
+
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Password</label>
+                                        <div class="position-relative">
+                                            <input id="pass" type="password" class="input" data-type="password"
+                                                placeholder="Enter your password" required>
+                                            <img src="../images/showPass/eye-close.png" id="eye" alt="eye"
+                                                class="position-absolute">
+                                        </div>
+                                        <div id="invaild_login_pas">
+
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <input id="check" type="checkbox" class="check" checked>
+                                        <label style="visibility: hidden;" for="check"><span class="icon">
+                                        </span> Keep me Signed in</label>
+                                    </div>
+                                    <div id="invaild_email_pas">
+                                    </div>
+                                    <div class="group">
+                                        <input type="submit" id="login-button" class="button" value="Sign In">
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="foot">
+                                        <label for="forgot_password">Forgot password?</label>
+                                        <a href="../about_contact pages/contact.html" id="forgot_password">Contact Us.</a>
+                                    </div>
+                                </div>
+                                <div class="sign-up-form">
+                                    <div class="group">
+                                        <label for="user" class="label">Username</label>
+                                        <input id="user-signup" type="text" class="input"
+                                            placeholder="Create your Username">
+                                    </div>
+                                    <div id="invaild_username">
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Password</label>
+                                        <div class="position-relative">
+                                            <input id="pass-signup" type="password" class="input" data-type="password"
+                                                placeholder="Create your password">
+                                            <img src="../images/showPass/eye-close.png" id="eye-signup" alt="eye"
+                                                class="position-absolute">
+                                        </div>
+                                        <div id="invaild_pas">
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Repeat Password</label>
+                                        <div class="position-relative">
+                                            <input id="pass-signup-val" type="password" class="input"
+                                                data-type="password" placeholder="Repeat your password">
+                                            <img src="../images/showPass/eye-close.png" id="eye-signup-val" alt="eye"
+                                                class="position-absolute">
+                                        </div>
+                                        <div id="invaild_pas_val">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Email Address</label>
+                                        <input id="email" type="text" class="input"
+                                            placeholder="Enter your email address">
+                                        <div id="email_exist">
+
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <label for="select-type" class="label">User type</label>
+                                        <select class="form-select input" aria-label="Default select example"
+                                            id="select-type">
+                                            <option value="customer">Customer</option>
+                                            <option value="seller">Seller</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="group">
+                                        <div id="signup_done">
+
+                                        </div>
+                                        <input type="submit" class="button" id="signup_button" value="Sign Up">
+
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="foot ">
+                                        <label for="tab-1">Already Member?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- login page end -->
+    <div id="footer"></div>
+    
+    <script src="../components/navbar/nav.js"></script>
+    <script src="../components/footer/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+</body>
+
+</html>

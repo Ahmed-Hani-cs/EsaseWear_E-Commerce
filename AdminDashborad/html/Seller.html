@@ -1,0 +1,187 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	  <!-- Font Awesome CSS (for sorting icons) -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+	  <!-- DataTables CSS -->
+	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  
+  
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<title>AdminDashborad</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-grid-alt'></i>
+			<span class="text">AdminDashborad</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="index.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				<a href="Users.html">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Customers</span>
+				</a>
+			</li>
+            <li class="active">
+				<a href="Seller.html">
+					<i class='bx bx-user'></i>
+					<span class="text">Seller</span>
+				</a>
+			</li>
+			<li>
+				<a href="Products.html">
+					<i class='bx bx-receipt'></i>
+					<span class="text">Products</span>
+				</a>
+			</li>
+			<li>
+				<a href="Orders.html">
+					<i class='bx bxs-basket'></i>
+					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="messages.html">
+					<i class='bx bx-chat'></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="updateAccount.html">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a id="logoutBtn" href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<form action="#">
+			
+			</form>
+			
+
+			<a href="messages.html" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span id="numOfMessages" class="num">0</span>
+			</a>
+			<a href="updateAccount.html" class="profile">
+				<img src="../img/img2.png">
+				<span id="yourName"  class="name"></span>
+
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="index.html">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="Seller.html">Seller</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+            <div class="form">
+            <div class="input">
+                <input class="inputs" type="text" placeholder="Name" id="Name" required>
+               
+                <input class="inputs" type="email" id="email" placeholder="email" required>
+                <input class="inputs" type="password" id="password" placeholder="password"required >
+                <!-- <input class="inputs" type="text" id="type" value="seller" disabled > -->
+				<select class="inputs" id="type">
+					<option value="customer" >Customer</option>
+					<option value="seller" selected>Seller</option>
+				</select>
+                <button id="createSeller">Create</button>
+        
+            </div>
+            </div>
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Seller</h3>
+                        
+                        <input class="inputs search" id="searchData" placeholder="Search" type="text">
+                        <i id="x" class='bx bx-message-square-x'></i>
+						<i id="s" class='bx bx-search' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th id="sellerName">SellerName  <i class="fas fa-sort"></i></th>
+                                <th id="sellerID">SellerID  <i class="fas fa-sort"></i></th>
+								<th id="sellerEmail">Email  <i class="fas fa-sort"></i></th>
+								<th>Password</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody id="tbody">
+							
+						</tbody>
+					</table>     
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+   
+
+
+	<script src="../js/script.js"></script>
+    <script src="../js/seller.js"></script>
+
+	   <!-- jQuery -->
+	   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	   <!-- DataTables JS -->
+	   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+   
+</body>
+</html>

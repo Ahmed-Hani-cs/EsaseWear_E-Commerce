@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checkout</title>
+    <link rel="stylesheet" href="../css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/master.css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11"> -->
+    
+    <title>Checkout</title>
+ 
+
+
+    <style>
+        #submitButton {
+            margin-bottom: 20px;
+        }
+
+        /**/
+        #head1 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #myInnerDiv {
+            justify-content: space-between;
+        }
+
+        #hr {
+            text-align: center;
+            width: 90%;
+            background-color: rgb(202, 207, 196);
+            height: 1px;
+        }
+
+        h5 {
+            font-size: 30;
+            text-align: left;
+
+        }
+
+        input {
+            margin-bottom: 20px;
+        }
+
+        h5:hover {
+            color: chocolate;
+        }
+
+        #main {
+            display: flex;
+        }
+
+        body {
+            margin-bottom: 20px;
+        }
+
+        #head {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #head p:first-child {
+            margin-right: auto;
+
+        }
+
+        #divOfCheck1 {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+
+            h5 {
+                font-size: 24px;
+            }
+
+            #leftWrapper,
+            #rightWrapper {
+                width: 100%;
+
+            }
+
+            #main {
+                flex-direction: column;
+            }
+
+            .container {
+                max-width: 100%;
+                padding-right: 0;
+                padding-left: 0;
+
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+        }
+
+        #payment {
+            display: block;
+
+        }
+
+        #rightWrapper {
+            height: 100%;
+            margin: 20px;
+            width: 90%;
+        }
+    </style>
+
+</head>
+
+<body class="mt-4">
+    <center>
+        <div>
+            <h5 class="m-4" style="font-size: 23px;">checkout</h5>
+            <hr id="hr">
+            <div id="alertContainer" style="width: 50%;"></div>
+    </center>
+
+    <div id="main" class="container">
+
+        <div id="leftWrapper" class="col-md-7 ">
+            <h5 class="row g-3 m-4" style="color: rgb(6, 5, 6);font-weight: 700;font-size: 20px;">Billing Details</h5>
+            <hr id="hr" class="row g-3 m-4">
+            <form class="row g-3 m-4" id="checkoutForm">
+
+                <div class="col-md-6">
+                    <label for="fn" class="form-label"><i class="fas fa-user" style="margin-right: 3px;"></i>First
+                        name</label>
+                    <input type="text" class="form-control is_invalid" id="fn" pattern="[A-Za-z]{3,}"
+                        title="Only alphabetical characters are allowed" required>
+                    <div class="invalid-feedback" id="errorFnMsg">
+                        Please enter a valid first name.
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="ln" class="form-label"><i class="fas fa-user" style="margin-right: 3px;"></i>Last
+                        name</label>
+                    <input type="text" class="form-control" id="ln" pattern="[A-Za-z]{3,}" required>
+                    <p class="invalid-feedback" id="errorLnMsg">
+                        Please enter a valid last name.
+                    </p>
+                </div>
+                <div class="col-12">
+                    <label for="country" class="form-label"><i class="fas fa-globe" style="margin-right: 3px;"></i>
+                        Country/Region</label>
+                    <input type="text" class="form-control" id="country" placeholder="Egypt" required pattern="[A-Za-z]{3,}">
+                </div>
+                <div class="col-12">
+                    <label for="inputCity" class="form-label"><i class="fas fa-map-marked-alt"
+                            style="margin-right: 3px;"></i>Town/City</label>
+                    <input type="text" class="form-control" id="inputCity" required pattern="[A-Za-z]{3,}">
+                </div>
+                <div class="col-md-6">
+                    <label for="street" class="form-label"><i class="fas fa-road" style="margin-right: 3px;"></i>Street
+                        address</label>
+                    <input type="text" class="form-control" id="street" placeholder="House number and street name"
+                        required pattern="[A-Za-z]{3,}">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="inputZip" class="form-label"><i class="fas fa-map-marker-alt"></i> Zip Code</label>
+                    <input type="text" class="form-control" id="inputZip" pattern="[0-9]{4,5}" maxlength="5" required>
+                </div>
+                <div class="col-12">
+                    <label for="phone" class="form-label"><i class="fas fa-phone" style="margin-right: 3px;"></i>Phone
+                        Number</label>
+                    <input type="text" class="form-control" id="phone" pattern="(010|011|012)[0-9]{8}" maxlength="11"
+                        oninput="this.value=this.value.replace(/[^0-9]/g,'');" required>
+                    <div class="invalid-feedback">Please enter a valid mobile number like 010xxxxxxxx.</div>
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label"><i class="fas fa-envelope"
+                            style="margin-right: 3px;"></i>Email address</label>
+                    <input class="form-control"  id="email" pattern="[a-zA-Z0-9_.]{4,}@(yahoo|gmail|hotmail|outlook).(com|net|eg)" required>
+                    <p class="invalid-feedback">
+                        Please enter email address like "esraa@gmail.com"
+                    </p>
+                </div>
+                <div class="col-12">
+                    <label for="OrderNotes" class="form-label"><i class="fas fa-sticky-note"
+                            style="margin-right: 3px;"></i>Order notes(optional)</label>
+                    <textarea type="" class="form-control" id="orderNotes"
+                        placeholder="note about your order,e.g.special notes for delivery"></textarea>
+                    <hr style="width: 100%;" id="hr"> 
+                </div>
+
+                <div class="col-12" id="divOfCheck1">
+                    <input type="checkbox" id="check1" style="margin-right: 4px;">
+                    <label for="check1">Shipping address is the same as my billing address</label>
+                </div>
+                <div class="col-12" id="divOfCheck1">
+                    <input type="checkbox" id="check2" style="margin-right: 4px;">
+                    <label for="check2">save this information for next time</label>
+                </div>
+                <div class="col-12">
+                    <hr style="width: 100%; color: rgb(226, 229, 233);" id="hr">
+                </div>
+                <!--payment methodss-->
+                <div class="col-12" id="payment">
+                    <h3 style="font-weight:500;color: black;">Payment</h3>
+                    <input type="radio" value="credit" id="credit" name="p" style="margin-right: 5px;"><label
+                        for="credit"><i class="far fa-credit-card" style="color: blue;"></i>
+                        Credit Card</label><br>
+                    <input type="radio" value="debit" id="debit" name="p" style="margin-right: 5px;"><label
+                        for="debit"><i class="fab fa-cc-visa" style="color: blue;"></i>
+
+                        Visa</label><br>
+                    <input type="radio" value="paypal" id="paypal" name="p" style="margin-right: 5px;"><label
+                        for="paypal"><i class="fab fa-cc-paypal" style="color:rgb(25, 25, 188);"></i>
+                        PayPal</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="fnCard" class="form-label">Name On Card</label>
+                    <input type="text" class="form-control" id="fnCard" pattern="[A-Za-z]{3,}" required>
+                </div>
+                <!-- <div class="col-12 col-md-6">
+                    <label for="num" class="form-label"></i>Credit
+                        Card number</label>
+                    <input type="text" class="form-control" pattern="[0-9]{11}" maxlength="16" id="creditCard" required>
+                    <p class="invalid-feedback">at least 16 num</p>
+                </div> -->
+                <div class="col-12 col-md-4">
+                    <label for="expiration" class="form-label">Expirtaion</label>
+                    <input type="date" class="form-control" id="Expirtaion" required>
+                    <div class="invalid-feedback">Sorry Your card is expired</div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="CVV" class="form-label">CVV</label>
+                    <input type="text" id="CVV" class="form-control" pattern="[0-9]{3,4}"
+                        oninput="this.value=this.value.replace(/[^0-9]/g,'');" title="CVV must be 3 or 4 numeric digits"
+                        required>
+                    <div class="invalid-feedback">
+                        CVV must be 3 or 4 numeric digits
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class=" col-md-4 mt-5" id="rightWrapper" style="border: 1px rgb(237, 229, 229) solid;">
+            <h4 style="color: green;">Your Order</h4>
+            <div id="head" class="container">
+                <p>Product</p>
+                <p>Subtotal</p>
+            </div>
+            <hr id="hr">
+            <!--here where i display order images-->
+            <div id="head1" class="container">
+                <div id="myInnerDiv" class="row" style="display: flex; align-items: center;">
+                    <!-- Images and titles will be dynamically added here -->
+                </div>
+            </div>
+
+            <div id="head" class="container">
+                <p>Subtotal</p>
+                <p id="subtotal"></p>
+            </div>
+            <hr id="hr">
+            <div id="head" class="container">
+                <p>Total</p>
+                <p id="total"></p>
+            </div>
+            <hr id="hr">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success" id="submitButton"><i class="fas fa-check"></i>Place
+                    order</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        window.addEventListener("load", function () {
+            let currentUserId = JSON.parse(localStorage.getItem("user"))?.id;
+            let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+            let userCart = cartData.filter(item => item.userId === currentUserId);
+            var innerDiv = document.getElementById("myInnerDiv");
+            if (userCart.length > 0) {
+                let productsData = JSON.parse(localStorage.getItem("products")) || {};
+                userCart.forEach(function (cartItem) {
+                    var productId = cartItem.productId;
+                    if (cartItem.productId) {
+                        let productIndex = -1;
+                        for (let index = 0; index < productsData.length; index++) {
+                            if (parseInt(productsData[index].product_id) === parseInt(productId)) {
+                                productIndex = index;
+                                break;
+                            }
+                        }
+
+                        var imageElement = document.createElement("img");
+                        imageElement.setAttribute("width", "50px");
+                        imageElement.src = productsData[productIndex]['product_img'];
+                        var title = productsData[productIndex]['product_name'];
+                        var titleElement = document.createElement("p");
+                        titleElement.innerText = title;
+                        var hrElement = document.createElement("hr");
+                        hrElement.setAttribute("id", "hr");
+                        innerDiv.appendChild(imageElement);
+                        innerDiv.appendChild(titleElement);
+                        innerDiv.appendChild(hrElement);
+
+                    }
+
+                });
+
+            }
+            document.getElementById("total").innerText = JSON.parse(localStorage.getItem('totalPrice'));
+            document.getElementById("subtotal").innerText = JSON.parse(localStorage.getItem('subTotal'));
+        });
+    </script>
+
+    <script src="../js/productCheckout.js" type="module"></script>
+    <script src="../js/JQuery-3.3.1.min.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

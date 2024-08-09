@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seller Dashboard</title>
+  <script src="../../js/products_arr.js"></script>
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    table {
+      text-align: center;
+      background-color: #50335f;
+      width: 600px;
+      border-collapse: collapse;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(15, 15, 15, 0.3);
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    thead {
+      th {
+        text-align: center;
+        background-color: #292b34;
+      }
+    }
+
+    tbody {
+      tr {
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      td {
+        text-align: center;
+        position: relative;
+
+        &:hover {
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+          }
+        }
+      }
+    }
+
+    .searchBlock {
+      display: flex;
+      align-items: center;
+    }
+
+    #category {
+      padding: 5px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .profile-container {
+      width: 30%;
+      height: 200px;
+      text-align: center;
+      background-color: #f0defa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-container #un {
+      font-size: 18px;
+      color: #413e3e;
+      margin-bottom: 10px;
+    }
+
+    .profile-container #uEmail {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    tr:nth-child(even) {
+      background-color: #b097de;
+    }
+
+    .modal-content {
+      margin: 20px;
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 40px;
+      border: 1px solid #888;
+      width: 700px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#" id="currentUserName">Company name</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed " type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" style="visibility: hidden; height: 0;" type="text"
+      placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <button class="nav-link px-3" id="signOut">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" id="products-tab" data-bs-toggle="pill" data-bs-target="#products" href="#">
+                <i class="fa-solid fa-shop" style="height: 16px; margin-right: 10px;"></i>
+                Products
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="orders-tab" data-bs-toggle="pill" data-bs-target="#orders" href="#">
+                <i class="fa-brands fa-shopify" style="height: 16px; margin-right: 10px;"></i>
+                Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="dashboard-tab" data-bs-toggle="pill" data-bs-target="#dashboard" href="#">
+                <i class="fa-solid fa-chart-pie" style="height: 16px; margin-right: 10px;"></i>
+                Charts
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="customers-tab" data-bs-toggle="pill" data-bs-target="#customers" href="#">
+                <i class="fas fa-user" style="height: 16px; margin-right: 10px;"></i>
+                Profile
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- Content of the tabs -->
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="products">
+            <!-- Content for Products tab -->
+            <div
+              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Products</h1>
+            </div>
+            <!-- ===================start editing================= -->
+            <button id="openModalBtn" class="btn-style" style="width: 300px;">add Product</button>
+            <br>
+            <br>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <h1 style="font-size: 20px;">Add Product Details</h1>
+                <!-- ***********class name inpets*********** -->
+                <div class="input">
+                  <input type="text" id="title" placeholder="title " class="col-8" />
+                  <div id="title_val">
+
+                  </div>
+                  <input type="number" id="price" placeholder="price" min="1" max="99" class="col-8" />
+                  <div id="price_val">
+
+                  </div>
+                  <input type="number" id="count" placeholder="count" min="1" class="col-8" />
+                  <div id="count_val">
+                  </div>
+                  <textarea name="text" id="description" cols="30" rows="5" placeholder="description"
+                    class="col-8"></textarea>
+                  <div id="description_val">
+                  </div>
+                  <select class="custom-select custom-select-sm btn-style col-8" required id="category">
+                    <option value=0 selected>Please choose category</option>
+                    <option value="topwear">Top wear</option>
+                    <option value="jacket">Jacket</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="bottomwear">Bottom wear</option>
+                  </select>
+                  <div id="category_val">
+                  </div>
+                  <input type="file" id="img" class="col-6 btn-style" accept=".jpg, .jpeg, .png, .gif" />
+                  <img src="../images/logo1.png" id="imgPreview" style="width: 50px ;height: 30px;"
+                    alt="placeholder" /><br>
+                  <div id="img_val">
+
+                  </div>
+                  <button id="submit" class="container btn-style bg-success"
+                    style="width: 300px;display: block;margin-top: 20px; text-align: center;">create</button>
+                </div>
+              </div>
+            </div>
+            <div class="crud">
+              <div class="outputs row">
+                <div class="searchBlock col-md-6 col-lg-4">
+                  <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="Search"
+                    class="form-control mb-2"
+                    style="width: 250px;margin-right: 10px;background-color: #F3EDC8;border: 2px;color: black;" />
+                  <div class="btnSearch">
+                    <button onclick="getSearchMood(this.id)" class="btn-style" id="searchTitle"
+                      style="width: 180px;text-align: center;">
+                      Search By Title
+                    </button>
+                    <button onclick="getSearchMood(this.id)" class="btn-style"
+                      style="width: 180px; margin-left: 7px;text-align: center;" id="searchCategory">
+                      Search By category
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered container" border="2px" style="border-collapse: collapse;">
+                <thead>
+                  <tr style="background-color:#b097de;">
+                    <th id="test20">ID</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>count</th>
+                    <th>category</th>
+                    <th>Img</th>
+                    <th>update</th>
+                    <th>delete</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="orders">
+          <!-- Content for Orders tab -->
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Your Orders</h1>
+          </div>
+          <table class=" container" border="2px" style="border-collapse: collapse;">
+            <thead>
+              <tr style="background-color:#b097de;">
+                <th>Order id</th>
+                <th>Product id</th>
+                <th>Price</th>
+                <th>Count</th>
+                <th>Date Of Order</th>
+
+              </tr>
+            </thead>
+            <tbody id="orders-tbody">
+
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="dashboard">
+          <!-- Content for Charts tab -->
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Charts</h1>
+          </div>
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="containerOne  col-md-12 col-lg-6">
+                <canvas id="myChartOne"></canvas>
+              </div>
+              <div class="containerTwo  col-md-12 col-lg-6">
+                <canvas id="myChartTwo"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="customers">
+
+
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2" style="color: #5f4395;">My Profile</h1><br>
+
+          </div>
+          <div id="sellerInfo">
+            <div class="profile-container">
+              <img src="../../images/person.jfif" style="border-radius: 50%;width: 100px;">
+              <p id="un" class="h3">User Name</p>
+              <p id="uEmail" class="h2">Email</p>
+            </div>
+            <div class="editProfile">
+              <button type="button" class="btn btn-primary mt-3 ml-3 " style="margin-left: 13%;"
+                id="openBtn">Edit</button>
+            </div>
+          </div>
+          <div class="row mt-4 p-2 mb-5" id="EditDataDiv" style="display: none; border: 1px solid black; width: 50%;">
+            <div class="m-1 p-1 ">
+              <label for="Username">Username</label>
+              <input type="text" class="form-control" id="Username" placeholder="username">
+              <div id="invalid_username"></div>
+            </div>
+            <div class="m-1 p-1 ">
+              <label for="Email1">Email address</label>
+              <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
+                placeholder="Enter email">
+              <div id="invalid_email"></div>
+            </div>
+            <div class="m-1 p-1 ">
+              <label for="Password1">Password</label>
+              <input type="password" class="form-control" id="Password1" placeholder="Password">
+              <div id="invalid_password"></div>
+            </div>
+            <div style="margin-top: 10px; text-align: center;">
+              <button type="button" class="btn btn-danger m-3" style="text-align: center;"
+                id="cancelChanges">Cancel</button>
+              <button type="button" class="btn btn-primary m-3" style="text-align: center;" id="saveChanges">Save
+                Changes</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Your existing script imports -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="../js/main.js"></script>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../../js/all.min.js"></script>
+  <script src="../js/dashboard.js"></script>
+
+
+  <script>
+    //edit current user profile
+    let username = document.getElementById("Username");
+    let email = document.getElementById("Email1");
+    let password = document.getElementById("Password1");
+    let user = JSON.parse(localStorage.getItem("user"));
+    let invalid_username = document.getElementById("invalid_username");
+    let invalid_email = document.getElementById("invalid_email");
+    let invalid_password = document.getElementById("invalid_password");
+    let openBtn = document.getElementById("openBtn");
+    let div = document.getElementById("EditDataDiv");
+    let saveChanges = document.getElementById("saveChanges");
+    let cancelChanges = document.getElementById("cancelChanges");
+    let sellerInfo = document.getElementById("sellerInfo");
+    let users = JSON.parse(localStorage.getItem("users"));
+
+    const nameRegex = /^[a-zA-Z0-9 ]{3,}$/;
+    const emailRegex = /^[a-zA-Z0-9_.]{4,}@(yahoo|gmail|hotmail|outlook).(com|net|eg)$/;
+
+
+    openBtn.addEventListener("click", function () {
+      div.style.display = "block";
+      username.value = user.name;
+      email.value = user.email;
+      password.value = "";
+      sellerInfo.style.display = "none";
+    });
+
+    saveChanges.addEventListener("click", function () {
+      if (!nameRegex.test(username.value) || !emailRegex.test(email.value) || password.value.length < 8) {
+        if (!nameRegex.test(username.value)) {
+          username.style.border = "2px solid red";
+          invalid_username.innerHTML = "Username must be more than 3 char";
+        } else {
+          username.style.border = "2px solid green";
+          invalid_username.innerHTML = "";
+        }
+        if (!emailRegex.test(email.value)) {
+          email.style.border = "2px solid red";
+          invalid_email.innerHTML = "invalid email EX: <span style='color: #b6b3b3;'><i>iti@gmail.com</i></span>"
+        } else {
+          email.style.border = "2px solid green";
+          invalid_email.innerHTML = "";
+        }
+        if (password.value.length < 8) {
+          password.style.border = "2px solid red";
+          invalid_password.innerHTML = "Password must be more than 8 char";
+        } else {
+          password.style.border = "2px solid green";
+          invalid_password.innerHTML = "";
+        }
+      } else {
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].id == user.id) {
+            users[i].name = username.value;
+            users[i].email = email.value;
+            users[i].password = password.value;
+            localStorage.setItem("users", JSON.stringify(users));
+            localStorage.setItem("user", JSON.stringify(users[i]));
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Your changes have been saved',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(function () {
+              div.style.display = "none";
+              sellerInfo.style.display = "block";
+              clearProfileData();
+              //display updated data
+              document.getElementById("un").innerText = "username "+": " + JSON.parse(localStorage.getItem("user")).name;
+              document.getElementById("uEmail").innerText ="password"+ ": " + JSON.parse(localStorage.getItem("user")).email;
+              document.getElementById("currentUserName").innerText = JSON.parse(localStorage.getItem("user")).name;
+            });
+            break;
+          }
+        }
+      }
+    });
+    cancelChanges.addEventListener("click", function () {
+      clearProfileData();
+      sellerInfo.style.display = "block";
+      div.style.display = "none";
+    });
+    function clearProfileData() {
+      email.value = "";
+      username.value = "";
+      password.value = "";
+      invalid_username.innerHTML = "";
+      invalid_email.innerHTML = "";
+      invalid_password.innerHTML = "";
+      username.style.border = "";
+      email.style.border = "";
+      password.style.border = "";
+    }
+    //display current user data
+    document.getElementById("un").innerText = "username "+": " + JSON.parse(localStorage.getItem("user")).name;
+    document.getElementById("uEmail").innerText ="password"+ ": " + JSON.parse(localStorage.getItem("user")).email;
+/////////////////////////////////
+//display order to seller
+    var myOrderTap = document.getElementById("orders-tab");
+    var currentIndex = JSON.parse(localStorage.getItem("currentindex"));
+    var orderData = localStorage.getItem('OrderData');
+    var targetSeller = JSON.parse(localStorage.getItem("user")).id; // Replace with the specific seller you want
+    // Check if orderData is not null or undefined
+    if (orderData) {
+      orderData = JSON.parse(orderData); // Parse the JSON if it exists
+      for (let x = 0; x < orderData.length; x++) {
+        // Check if orderData[x].quantity is not null or undefined
+        if (orderData[x].quantity) {
+          orderData[x].quantity.forEach(element => {
+            // Check if the quantity array element matches the target seller
+            if (element.seller === targetSeller) {
+              var calculatedValue = (orderData[x]['Order Id'] * 100);
+              var tr = document.createElement("tr");
+              var td1 = document.createElement("td");
+              var td2 = document.createElement("td");
+              var td3 = document.createElement("td");
+              var td4 = document.createElement("td");
+              var td5 = document.createElement("td");
+              const timestamp = orderData[x]["Date of Order"];
+
+              // Create a Date object from the timestamp
+              const dateObject = new Date(timestamp);
+
+              // Extract the date components
+              const year = dateObject.getUTCFullYear();
+              const month = (dateObject.getUTCMonth() + 1).toString().padStart(2,
+                '0'); // Month is zero-based, so add 1
+              const day = dateObject.getUTCDate().toString().padStart(2, '0');
+              // Format the date as YYYY-MM-DD
+              const formattedDate = `${year}-${month}-${day}`;
+              td1.innerText = calculatedValue.toFixed();
+              td2.innerText = element.productId;
+              td3.innerText = element.priceOfItem; // Accessing priceOfItem property
+              td4.innerText = element.numOfItems;
+              td5.innerText = formattedDate;
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+              tr.appendChild(td4);
+              tr.appendChild(td5);
+              document.getElementById("orders-tbody").appendChild(tr);
+            }
+          });
+        }
+      }
+    }
+   //end of displaying order to seller
+    window.addEventListener("load", function () {
+      document.getElementById("currentUserName").innerText = JSON.parse(localStorage.getItem("user")).name;
+      var modal = document.getElementById("myModal");
+      var openModalBtn = document.getElementById("openModalBtn");
+      var closeModalBtn = document.getElementById("submit");
+
+      function openModal() {
+
+        modal.style.display = "block";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+      openModalBtn.addEventListener("click", openModal);
+      var I = 0;
+      window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      });
+
+      // Add event listener for tab changes
+      var tabs = document.querySelectorAll('.nav-link');
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function (event) {
+          // Hide all tab content
+          document.querySelectorAll('.tab-pane').forEach(function (content) {
+            content.style.display = 'none';
+          });
+          I = index;
+          // Show the selected tab content
+          var targetId = event.target.getAttribute('data-bs-target').substring(1);
+          document.getElementById(targetId).style.display = 'block';
+          //to be able to access tab index from external json
+          window.currentTabIndex = index;
+          localStorage.setItem("currentindex", JSON.stringify(index));
+        });
+      });
+
+    });
+  </script>
+  <script src="../../js/all.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+#mainWrapper {
+    display: flex;
+}
+
+#rightWrapper {
+    /*  background-color: burlywood;*/
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.element:last-child {
+    margin-bottom: 30vh;
+}
+
+#i1 {
+    width: 35vw;
+    height: 80vh;
+}
+
+#rangeAddTo {
+    display: flex;
+}
+
+
+/* Override Bootstrap styles for col-12 on small screens */
+@media (max-width: 576px) {
+    #mainWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #leftWrapper,
+    #rightWrapper {
+        width: 100%;
+    }
+
+    img {
+        width: 100vw;
+        height: 80vh;
+    }
+}

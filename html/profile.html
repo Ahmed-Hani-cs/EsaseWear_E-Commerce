@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Profile Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homeStyle.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Nav bar -->
+    <section id="header">
+
+    </section>
+
+    <br>
+    <div>
+
+        <b>
+            <h1><b><i>WelCome To Your Profile</i></b></h1>
+        </b>
+        <br>
+
+
+        <div>
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush ">
+                        <a class="list-group-item list-group-item-action  " data-toggle="list"
+                            href="#account-general"><b>General </b></a>
+                        <a class="list-group-item list-group-item-action " data-toggle="list"
+                            href="#account-change-password"><b>Change password</b></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+
+
+                            <div id="myForm">
+                                <form action="">
+                                    <div>
+                                        <label class="form-label"><b>Username</b> </label>
+                                        <input type="text" value="" id="username" class="form-control mb-1"
+                                            placeholder="username" required>
+                                    </div>
+                                    <br>
+
+                                    <br>
+                                    <div>
+                                        <label class="form-label"><b>E-mail</b></label>
+                                        <input type="email" id="e-mail" value="" class="form-control mb-1"
+                                            placeholder="e-mail" required>
+                                        <br>
+
+                                    </div>
+                                    <button id="submit" type="submit" class="btn btn-success btn-lg px-3">
+                                        Submit</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label"><b>Current password</b></label>
+                                    <input type="password" id="Currentpassword" class="form-control"
+                                        placeholder="currentpassword" required name="Current password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"><b>New password</b></label>
+                                    <input type="password" id="Newpassword" class="form-control"
+                                        placeholder="new password" required name="New password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"><b>Confirm new password</b></label>
+                                    <input type="password" id="Confirmnewpassword" class="form-control"
+                                        placeholder="Confirm new password" required name="Confirm new password">
+                                </div>
+                            </div>
+                            <button id="submitPassword" type="submit" class="btn btn-success btn-lg px-3">
+                                Submit</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right mt-3">
+
+            <button id="logout2" type="button" class="btn btn-success btn-lg px-3">log out</button>
+        </div>
+
+    </div>
+
+
+
+
+    <div id="footer"></div>
+
+
+
+    <script src="../components/navbar/nav.js"></script>
+    <script src="../components/footer/footer.js"></script>
+    <script src="../js/all.min.js"></script>
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/profile.js"></script>
+
+</body>
+
+</html>

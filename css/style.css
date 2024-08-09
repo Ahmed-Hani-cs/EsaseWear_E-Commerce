@@ -1,0 +1,92 @@
+
+@import url("product.css");
+@import url("../components/navbar/nav.css");
+@import url("../components/footer/footer.css");
+
+
+body {
+    width: 100%;
+  }
+  
+#header{
+  margin-bottom: 100px;
+}
+
+  #search-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #search-container select,
+  #search-container input {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin: 5px;
+  }
+  
+  #search-container select {
+    width: 10vw; 
+    border-radius: 5px;
+    margin-left: 138px;
+  }
+  
+  #search-container input {
+    width: 50vw;
+    border-bottom: 2px solid #110f29;
+    
+  }
+  
+  #search-container input:focus {
+    border-bottom-color: #d1b761;
+  }
+  
+  #search {
+    font-size: 1.5rem !important;
+    margin-left: 0.5rem;
+  }
+  
+  .my-button {
+    padding: 0.5rem;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    font-weight: 200;
+    width: 90%;
+  }
+  
+  
+  #search {
+    background: transparent !important;
+    color: #d1b761 !important;
+    margin-left: 5vw;
+    font-size: 4vw !important;
+  }
+
+  #filter{
+    background: #e7d6a0 !important;
+    color: #000 !important;
+  }
+
+  
+  
+  .hide {
+    display: none;
+  }
+  
+  #product1 .myproduct-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  
+  #product1 h2 {
+    font-size: 5vw;
+  }
+  
